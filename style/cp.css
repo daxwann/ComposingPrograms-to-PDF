@@ -430,6 +430,7 @@ text-align:center
 .inner-content {
 width:90%;
 margin: 20px;
+page-break-before: always;
 }
 
 .nosidebar .inner-content {
