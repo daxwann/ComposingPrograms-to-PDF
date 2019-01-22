@@ -5,15 +5,14 @@ require "open-uri"
 class Book
     attr_accessor :chapters, :file
 
-    def initialize(book_name, recipient)
+    def initialize(book_name)
         @name = book_name
-        @file = File.open("#{book_name}.html", "w");
-        @recipient = recipient
+        @file = File.open("../#{book_name}.html", "w");
         @chapters = Hash.new
         @home_url = "https://composingprograms.com"
-        @header = "./partials/header.html"
-        @footer = "./partials/footer.html"
-        @copyright = "./partials/copyright.html"
+        @header = "../partials/header.html"
+        @footer = "../partials/footer.html"
+        @copyright = "../partials/copyright.html"
     end
 
     def setChapterUrl()
@@ -86,5 +85,9 @@ class Book
 
     def closeFile()
         @file.close
+    end
+
+    def deleteFile()
+        File.delete("../#{@name}.html")
     end
 end
