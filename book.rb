@@ -1,10 +1,12 @@
 require "nokogiri"
 require "open-uri"
+#encoding: utf-8
 
 class Book
     attr_accessor :chapters, :file
 
     def initialize(book_name, recipient)
+        @name = book_name
         @file = File.open("#{book_name}.html", "w");
         @recipient = recipient
         @chapters = Hash.new
@@ -19,8 +21,9 @@ class Book
         @chapters["1.2"] = "12-elements-of-programming.html"
         @chapters["1.3"] = "13-defining-new-functions.html"
         @chapters["1.4"] = "14-designing-functions.html"
-        @chapters["1.6"] = "15-control.html"
-        @chapters["1.7"] = "16-higher-order-functions.html"
+        @chapters["1.5"] = "15-control.html"
+        @chapters["1.6"] = "16-higher-order-functions.html"
+        @chapters["1.7"] = "17-recursive-functions.html"
         @chapters["2.1"] = "21-introduction.html"
         @chapters["2.2"] = "22-data-abstraction.html"
         @chapters["2.3"] = "23-sequences.html"
@@ -50,9 +53,20 @@ class Book
         @file.write(header)
     end
 
+    def changeBookmark(intro, url)
+        id = url.gsub(/^(.*)\.html$/, '\1')
+        intro_bookmark = intro.gsub(/\.\/pages\/#{url}/, "\.\/#{@name}\.html\##{id}")
+        return intro_bookmark
+    end
+
     def parseIntro()
-        intro = Nokogiri::HTML(open(@home_url))
-        return intro.css('.inner-content')[0]
+        homepage = Nokogiri::HTML.parse(open(@home_url))
+        intro = homepage.css('.inner-content').first.to_html
+        @chapters.each do |ch, url|
+            intro = self.changeBookmark(intro, url)
+        end
+        
+        return intro
     end
 
     def putsIntro()

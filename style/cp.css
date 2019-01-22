@@ -36,6 +36,44 @@ em {
 font-style:italic
 }
 
+#title_page {
+  padding: 35% 0 5%;
+  background-color: #222;
+}
+
+#title_page h1 {
+  text-align: center;
+  margin: 0px 0px 35%;
+  color:#ddd;
+  font-size: 3em;
+}
+
+#title_page h3 {
+  text-align: center;
+  color:#ddd;
+  margin: 5% 0;
+  font-size: 1em;
+}
+
+#title_page .nav-logo {
+  color:#ddd;
+  vertical-align:middle;
+  text-transform:uppercase
+  }
+  
+#title_page .nav-logo-compose {
+  color:#00d8ff;
+  vertical-align:top;
+}
+
+#title_page .wrap {
+  margin: 10% 0 0;
+}
+
+#title_page a {
+  color:#00d8ff;
+}
+
 h1,h2,h3,h4,h5,h6 {
 font-family:inherit;
 font-weight:700;
@@ -143,7 +181,7 @@ float:right
 }
 
 .wrap {
-width:960px;
+width:90%;
 padding-left:20px;
 padding-right:20px
 }
