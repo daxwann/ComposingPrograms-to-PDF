@@ -24,7 +24,7 @@ $ ruby cptopdf.rb
 PDF file will be created in the root folder
 
 ## Authors
-Xiaoda Wang
+Dax Wann
 
 ## Acknowledgement
 
