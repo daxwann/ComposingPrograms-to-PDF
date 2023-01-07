@@ -10,9 +10,13 @@ Make sure all dependencies in Gemfile are available.
 $ bundle install
 ```
 
-Open local server in root folder. Port set to 8080
+In a separate terminal window, Open local server in root folder. Port set to 8080:
 
-Run cptopdf in lib
+```
+ruby -run -e httpd -- . -p 8080
+```
+
+Return to the first terminal window, then run cptopdf in lib
 
 ```
 $ cd lib

@@ -15,7 +15,7 @@ class Chapter
     end
 
     def parseChapter()
-        page = Nokogiri::HTML(open(@pages_url + @url))
+        page = Nokogiri::HTML(URI.open(@pages_url + @url))
         chapter = page.css('.inner-content').first.to_html
         chapter_newid = self.changeId(chapter)
         return chapter_newid

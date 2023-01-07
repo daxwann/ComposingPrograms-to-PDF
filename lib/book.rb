@@ -59,7 +59,7 @@ class Book
     end
 
     def parseIntro()
-        homepage = Nokogiri::HTML.parse(open(@home_url))
+        homepage = Nokogiri::HTML.parse(URI.open(@home_url))
         intro = homepage.css('.inner-content').first.to_html
         @chapters.each do |ch, url|
             intro = self.changeBookmark(intro, url)
